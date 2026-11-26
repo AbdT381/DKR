@@ -1,0 +1,30 @@
+start: statement+
+
+?statement: const_decl
+          | expr_stmt
+
+const_decl: NAME ":=" value ";"
+
+expr_stmt: "?" "[" expr "]" ";"
+
+?expr: sum_expr
+     | abs_call
+     | sqrt_call
+
+sum_expr: "+" expr expr
+abs_call: "abs" "(" expr ")"
+sqrt_call: "sqrt" "(" expr ")"
+
+?value: NUMBER
+      | dict
+      | NAME
+
+dict: "{" [pair ("," pair)*] "}"
+pair: NAME ":" value
+
+NAME: /[a-zA-Z][_a-zA-Z0-9]*/
+NUMBER: /0[bB][01]+/
+
+COMMENT: /\(comment[\s\S]*?\)/
+%ignore COMMENT
+%ignore /[ \t\n\r]+/
