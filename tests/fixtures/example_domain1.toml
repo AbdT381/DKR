@@ -1,0 +1,4 @@
+base_port = 8
+max_conn = 12
+health = 10
+nodes = { primary = 8, backup = 12 }
