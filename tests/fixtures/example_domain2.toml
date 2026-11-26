@@ -1,0 +1,4 @@
+threads = 4
+jobs = 6
+root = 6
+env = { dev = 4, prod = 6 }
